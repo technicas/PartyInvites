@@ -1,0 +1,14 @@
+﻿@model PartyInvites.Models.GuestResponse
+@{
+    ViewData["Title"] = "Thanks";
+}
+
+<h2>Thanks you! @Model.Name</h2>
+@if (Model.WillAttend == true)
+{
+    <p>It's great that you are coming.</p>
+}
+else
+{
+    <p>Sorry to hear that you can't make it.</p>
+}

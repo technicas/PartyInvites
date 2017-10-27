@@ -31,9 +31,16 @@ namespace PartyInvites.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult RsvpForm()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult RsvpForm(GuestResponse guestResponse)
+        {
+            return View("Thanks", guestResponse);
         }
 
         public IActionResult Error()
