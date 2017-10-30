@@ -2,30 +2,50 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model PartyInvites.Models.GuestResponse
-@{
-    Layout = null;
-}
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="~/css/site.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" />
 <title>RsvpForm</title>
 </head>
 <body>
-@using (Html.BeginForm()) {
-    <p>Your name: @Html.TextBoxFor(x => x.Name)</p>
-    <p>Your email: @Html.TextBoxFor(x => x.Email)</p>
-    <p>Your phone: @Html.TextBoxFor(x => x.Phone)</p>
-    <p>
-        Will you attend?
-        @Html.DropDownListFor(x => x.WillAttend, new[]{
-            new SelectListItem() {Text = "Yes, I'll be there", 
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h4>RSVP</h4></div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Your name: </label>
+                @Html.TextBoxFor(x => x.Name, new { @class="form-control"})
+            </div>
+            <div class="form-group">
+                <label>Your email: </label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Your phone: </label>
+                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Will you attend?</label>
+                @Html.DropDownListFor(x => x.WillAttend, new[]{
+            new SelectListItem() {Text = "Yes, I'll be there",
             Value = bool.TrueString},
-            new SelectListItem() {Text = "No", 
+            new SelectListItem() {Text = "No",
             Value = bool.FalseString}
-        }, "Choose an option")
-    </p>
-    <input type="submit" value="Submit RSVP" />
-	
-}
+        }, "Choose an option", new { @class = "form-control" })
+            </div>
+            <div class="text-center">
+                <input class="btn btn-success" type="submit" value="Submit RSVP" />
+            </div>
+            
+
+        }
+    </div>
+</div>
+
 
 </body>
 </html>

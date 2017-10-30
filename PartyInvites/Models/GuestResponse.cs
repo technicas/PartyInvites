@@ -34,6 +34,7 @@ namespace PartyInvites.Models
 
         public GuestResponse()
         {
+
         }
     }
 }
